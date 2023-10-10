@@ -66,8 +66,8 @@ const HandleEvents = () => {
     <>
       <div
         id="mainForm"
-        className="h-full p-5 flex justify-between w-full bg-gradient-to-r from-sky-400 to-indigo-600 ">
-        <div className=" mt-3  w-full">
+        className="h-full p-5 flex flex-col md:flex-row  items-center w-full bg-gradient-to-r from-sky-400 to-indigo-600 ">
+        <div className="w-[70%] my-5">
           <form
             id="form"
             onSubmit={handleSubmit}
@@ -132,7 +132,7 @@ const HandleEvents = () => {
             </button>
           </form>
         </div>
-        <div className="md:w-[40%] rounded-[20px] shadow-lg shadow-fuchsia-500 border-fuchsia-500 border h-fit p-2 md:relative right-[20%]">
+        <div className="md:w-[40%] mt-20 rounded-[20px] shadow-lg shadow-fuchsia-500 border-fuchsia-500 border h-fit p-2 md:relative right-[20%]">
           <p className="text-white text-center">
             Click to see the users currently log in
           </p>
