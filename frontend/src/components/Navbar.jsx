@@ -1,4 +1,5 @@
 import { BsWhatsapp, BsTelephoneInbound } from "react-icons/bs";
+
 import Hamburger from "hamburger-react";
 
 const NavBar = () => {
