@@ -1,46 +1,68 @@
 const User = require("../model/model");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
+const secretKey = "amit";
 const getUser = async (req, res) => {
   const allUsers = await User.find({});
   res.send(allUsers);
 };
 
-// const getUserById = async (req, res) => {
-//   const userId = req.params.id;
-//   const allUsers = await User.findById(userId,function (err, docs) {
-//     if (err){
-//         console.log(err);
-//     }
-//     else{
-//         console.log("Result : ", docs);
-//     }
+const findOneUser = async (req, res) => {
+  const body = req.body;
 
-//   }
-// res.send(allUsers)
-// }
+  try {
+    const user = await User.findOne({
+      email: body.email,
+    });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    const isPasswordValid = await bcrypt.compare(body.password, user.password);
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ error: "Invalid password" });
+    }
+
+    const token = jwt.sign({ userId: user._id }, secretKey, {
+      expiresIn: "1h",
+    });
+
+    res.json({ token });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Login failed" });
+  }
+};
 
 const postUsers = async (req, res) => {
   const body = req.body;
 
+  const hashedPassword = await bcrypt.hash(body.password, 10);
   if (!body.username || !body.first_name || !body.email || !body.password) {
     res.status(404).json({
       status: "User Not found",
       message: "Please fill all the fields",
     });
   }
-
   const result = await User.create({
     username: body.username,
     first_name: body.first_name,
     email: body.email,
-    password: body.password,
+    password: hashedPassword,
   });
 
-  res.status(201).json({
-    status: "success",
-    message: "User created successfully",
-    data: result,
-  });
+  try {
+    res.status(201).json({
+      status: "success",
+      message: "User created successfully",
+      data: result,
+      token,
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Login failed" });
+  }
 };
 
 const putUsers = async (req, res) => {
@@ -107,7 +129,7 @@ const deleteUsers = async (req, res) => {
 };
 module.exports = {
   getUser,
-  // getUserById,
+  findOneUser,
   postUsers,
   // updateUser,
   deleteUsers,

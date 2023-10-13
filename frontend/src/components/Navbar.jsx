@@ -35,7 +35,6 @@ const NavBar = () => {
         </div>
         <div
           className=" flex  gap-4 
-        
         ">
           <div className="sm:hidden">
             <Hamburger />

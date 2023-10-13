@@ -7,6 +7,7 @@ const HandleEvents = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [users, setUsers] = useState([]);
+  // const [loading, setLoading] = useState(true);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -33,7 +34,7 @@ const HandleEvents = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("/api/api/users", {
+      .post("/api/api/users/login", {
         username,
         first_name,
         email,
@@ -57,11 +58,6 @@ const HandleEvents = () => {
         console.error(`Error deleting user: ${error}`);
       });
   };
-  //   useEffect(() => {
-  //     const form = document.getElementById("form");
-  //     form.addEventListener("submit", formSubmit);
-  //   }, []);
-
   return (
     <>
       <div
@@ -75,6 +71,7 @@ const HandleEvents = () => {
             acceptCharset="UTF-8"
             className="flex-col rounded-[20px] shadow-lg shadow-fuchsia-500 border-fuchsia-500 border p-3 md:p-10  justify-center items-center md:w-[70%]  px-4 lg:w-[40%] flex space-y-5">
             <p className="text-white"> Please enter your info below </p>
+
             <label>
               <input
                 className="border-2 rounded border-purple-500  w-full h-5 p-4 hover:shadow-2xl placeholder:text-gray-600"
@@ -148,13 +145,14 @@ const HandleEvents = () => {
           <div className="">
             {users.map((value) => {
               const { username, email } = value;
+
               return (
                 <div
                   className="flex flex-wrap justify-center bg-white gap-1 rounded h-full w-full p-2 mt-2 text-sm"
                   key={crypto.randomUUID()}>
                   <p>Username: {username} </p>
                   <p>Email: {email}</p>
-                  <div className="flex justify-center items-center mr-15">
+                  <div className="flex justify-center items-center border-black border-2 text-white bg-red-500 mr-1 text-sm rounded p-[0.4%] mr-15">
                     <button onClick={deleteUser}>Delete User</button>
                   </div>
                 </div>
@@ -162,15 +160,6 @@ const HandleEvents = () => {
             })}
           </div>
         </div>
-        {/* <div>
-          <input
-            type="text"
-            placeholder="Enter username to delete"
-            value={usernameToDelete}
-            onChange={(e) => setUsernameToDelete(e.target.value)}
-          />
-          <button onClick={handleDelete}>Delete User</button>
-        </div> */}
       </div>
     </>
   );
