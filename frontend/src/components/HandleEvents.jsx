@@ -7,7 +7,6 @@ const HandleEvents = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [users, setUsers] = useState([]);
-  // const [loading, setLoading] = useState(true);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -24,6 +23,7 @@ const HandleEvents = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+
   const handleUsers = () => {
     axios
       .get("/api/users")

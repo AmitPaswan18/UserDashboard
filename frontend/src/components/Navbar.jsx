@@ -1,8 +1,20 @@
 import { BsWhatsapp, BsTelephoneInbound } from "react-icons/bs";
-
 import Hamburger from "hamburger-react";
+import { useState } from "react";
+import Login from "./Login.jsx";
+import Signup from "./Signup.jsx";
 
 const NavBar = () => {
+  const [login, setLogin] = useState(false);
+  const [signup, setSignup] = useState(false);
+  const handleLoginclick = () => {
+    setLogin(true);
+    setSignup(false);
+  };
+  const handleSignupclick = () => {
+    setLogin(false);
+    setSignup(true);
+  };
   return (
     <>
       <div
@@ -25,9 +37,16 @@ const NavBar = () => {
 
         <div className="lg:flex cursor-pointer flex-row space-x-10 mx-5 ">
           <button
+            onClick={handleLoginclick}
             className="md:hover:scale-125 hover:text-purple-600 text-sm ease-in md:my-auto duration-150 max-w-md h-10 bg-white p-1 rounded-md "
             type="button">
-            Login/ <span>Register</span>
+            Login
+          </button>
+          <button
+            onClick={handleSignupclick}
+            className="md:hover:scale-125 hover:text-purple-600 text-sm ease-in md:my-auto duration-150 max-w-md h-10 bg-white p-1 rounded-md "
+            type="button">
+            Signup/ <span>Register</span>
           </button>
         </div>
         <div id="contactIcon" className="flex gap-6  text-white">
@@ -41,6 +60,11 @@ const NavBar = () => {
             <Hamburger />
           </div>
         </div>
+      </div>
+      <div>
+        {" "}
+        {login && <Login />}
+        {signup && <Signup />}
       </div>
     </>
   );

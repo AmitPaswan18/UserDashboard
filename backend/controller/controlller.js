@@ -17,6 +17,7 @@ const findOneUser = async (req, res) => {
     });
 
     if (!user) {
+      alert("failed");
       return res.status(404).json({ error: "User not found" });
     }
     const isPasswordValid = await bcrypt.compare(body.password, user.password);
@@ -29,7 +30,7 @@ const findOneUser = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.json({ token });
+    res.json({ token, status: true });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Login failed" });

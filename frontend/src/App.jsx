@@ -1,4 +1,4 @@
-import HandleEvents from "./components/HandleEvents.jsx";
+// import HandleEvents from "./components/HandleEvents.jsx";
 import NavBar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./components/Login.jsx";
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <HandleEvents />
+      {/* <HandleEvents /> */}
       <Router>
         <Switch>
           <Route path="/login">
