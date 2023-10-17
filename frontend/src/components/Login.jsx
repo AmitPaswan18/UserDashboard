@@ -46,6 +46,7 @@ const Login = () => {
         setAuthenticated(true);
       })
       .catch((error) => console.log(error));
+
     setUsername("");
     setFirstName("");
     setEmail("");

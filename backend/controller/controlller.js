@@ -7,7 +7,6 @@ const getUser = async (req, res) => {
   const allUsers = await User.find({});
   res.send(allUsers);
 };
-
 const findOneUser = async (req, res) => {
   const body = req.body;
 
