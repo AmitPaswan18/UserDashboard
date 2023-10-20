@@ -11,7 +11,6 @@ function App() {
     <>
       <Router>
         <NavBar />
-        <AllUsers />
         <Switch>
           <Route exact path="/">
             {<Home />}
