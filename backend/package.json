@@ -1,12 +1,12 @@
 {
-  "name": "working-with-the-dummy-data-in-local-fs",
+  "name": "user-dashboard",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node index.js"
   },
-  "author": "",
+  "author": "amit",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",

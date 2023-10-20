@@ -1,5 +1,5 @@
 import NavBar from "./components/Navbar";
-import AllUsers from "./components/AllUsers.jsx";
+// import AllUsers from "./components/AllUsers.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
