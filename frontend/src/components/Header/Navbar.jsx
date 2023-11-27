@@ -1,8 +1,8 @@
 import { BsWhatsapp, BsTelephoneInbound } from "react-icons/bs";
 import Hamburger from "hamburger-react";
 import { useState } from "react";
-import Login from "./Login.jsx";
-import Signup from "./Signup.jsx";
+import Login from "../Login.jsx";
+import Signup from "../Signup.jsx";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const NavBar = () => {

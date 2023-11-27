@@ -1,4 +1,4 @@
-const User = require("../model/userModels");
+const User = require("../models/userModels");
 
 const faker = require("faker");
 async function generateFakeUsers(count) {
